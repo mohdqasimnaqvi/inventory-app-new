@@ -32,7 +32,7 @@ class productStoreRequest extends FormRequest
             'quantity_unit' => ['required', 'string'],
             'is_daily' => ['required'],
             'is_hidden' => ['required'],
-            'has_reminder' => ['required'],
+            // 'has_reminder' => ['required'],
         ];
     }
 }
