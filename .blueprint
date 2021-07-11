@@ -1,0 +1,18 @@
+created:
+    - app/Http/Controllers/productController.php
+    - database/factories/ProductFactory.php
+    - database/migrations/2021_07_11_112846_create_products_table.php
+    - app/Product.php
+    - tests/Feature/Http/Controllers/productControllerTest.php
+    - app/Http/Requests/productStoreRequest.php
+    - app/Http/Requests/productUpdateRequest.php
+    - resources/views/products/monthly.blade.php
+    - resources/views/products/daily.blade.php
+    - resources/views/products/create/monthly.blade.php
+    - resources/views/products/create/daily.blade.php
+    - resources/views/products/show.blade.php
+    - resources/views/products/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Product: { title: string, image: string, price: decimal, price_unit: string, quantity: decimal, quantity_unit: string, is_daily: 'boolean default:false', is_hidden: 'boolean default:false', has_reminder: 'boolean default:false' }

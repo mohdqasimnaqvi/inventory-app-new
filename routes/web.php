@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('product/monthly', [ProductController::class, 'monthly']);
+Route::get('product/daily', [ProductController::class, 'daily']);
+Route::get('product/create-monthly', [ProductController::class, 'createMonthly']);
+Route::get('product/create-daily', [ProductController::class, 'createDaily']);
+Route::resource('product', ProductController::class)->except('index', 'create');
