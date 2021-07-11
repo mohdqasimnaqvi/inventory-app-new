@@ -1,0 +1,40 @@
+models:
+  Product:
+    title: string:255
+    image: string:255
+    price: number
+    price_unit: string:255
+    quantity: number
+    quantity_unit: string:255
+    is_daily: boolean default:false
+    is_hidden: boolean default:false
+    has_reminder: boolean default:false
+controllers:
+  product:
+    monthly:
+      query: all:products
+      render: products.monthly with:products
+    daily:
+      query: all:products
+      render: products.daily with:products
+    create-monthly:
+      render: products.create.monthly
+    create-daily:
+      render: products.create.daily
+    store:
+      validate: products
+      save: products
+      flash: products.id
+      redirect: products.index
+    show:
+      render: products.show with:products
+    edit:
+      render: products.edit with:products
+    update:
+      validate: products
+      update: products
+      flash: products.id
+      redirect: products.index
+    destroy:
+      delete: products
+      redirect: products.index
