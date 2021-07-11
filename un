@@ -1,0 +1,50 @@
+!doctype html>
+<html class="theme-light">
+<!--
+
+#5 C:\xampp\htdocs\inventory-app-new\resources\views/products/monthly.blade.php(22): Illuminate\Database\Eloquent\Model-&gt;offsetGet('price')
+#57 C:\xampp\htdocs\inventory-app-new\public\index.php(52): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#58 C:\xampp\htdocs\inventory-app-new\server.php(21): require_once('C:\\xampp\\htdocs...')
+#59 {main}
+-->
+<head>
+    <!-- Hide dumps asap -->
+    <style>
+        pre.sf-dump {
+            display: none !important;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>🧨 Undefined offset: 1 (View: C:\xampp\htdocs\inventory-app-new\resources\views\products\monthly.blade.php)</title>
+
+
+</head>
+<body class="scrollbar-lg">
+
+<script>
+
+    window.tabs = [];
+</script>
+
+
+#5 C:\xampp\htdocs\inventory-app-new\resources\views/products/monthly.blade.php(22): Illuminate\Database\Eloquent\Model-&gt;offsetGet('price')
+#57 C:\xampp\htdocs\inventory-app-new\public\index.php(52): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#58 C:\xampp\htdocs\inventory-app-new\server.php(21): require_once('C:\\xampp\\htdocs...')
+#59 {main}
+</pre></noscript>
+
+<div id="app"></div>
+
+<!--
+
+#5 C:\xampp\htdocs\inventory-app-new\resources\views/products/monthly.blade.php(22): Illuminate\Database\Eloquent\Model-&gt;offsetGet('price')
+#57 C:\xampp\htdocs\inventory-app-new\public\index.php(52): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#58 C:\xampp\htdocs\inventory-app-new\server.php(21): require_once('C:\\xampp\\htdocs...')
+#59 {main}
+-->

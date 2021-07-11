@@ -2,8 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Product;
-use App\Products;
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use JMac\Testing\Traits\AdditionalAssertions;
@@ -26,8 +25,8 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.monthly'));
 
         $response->assertOk();
-        $response->assertViewIs('products.monthly');
-        $response->assertViewHas('products');
+        $response->assertViewIs('product.monthly');
+        $response->assertViewHas('product');
     }
 
 
@@ -41,8 +40,8 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.daily'));
 
         $response->assertOk();
-        $response->assertViewIs('products.daily');
-        $response->assertViewHas('products');
+        $response->assertViewIs('product.daily');
+        $response->assertViewHas('product');
     }
 
 
@@ -54,7 +53,7 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.createMonthly'));
 
         $response->assertOk();
-        $response->assertViewIs('products.create.monthly');
+        $response->assertViewIs('product.create.monthly');
     }
 
 
@@ -66,7 +65,7 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.createDaily'));
 
         $response->assertOk();
-        $response->assertViewIs('products.create.daily');
+        $response->assertViewIs('product.create.daily');
     }
 
 
@@ -89,9 +88,9 @@ class productControllerTest extends TestCase
     {
         $title = $this->faker->sentence(4);
         $image = $this->faker->word;
-        $price = $this->faker->randomFloat(/** decimal_attributes **/);
+        $price = $this->faker->word;
         $price_unit = $this->faker->word;
-        $quantity = $this->faker->randomFloat(/** decimal_attributes **/);
+        $quantity = $this->faker->word;
         $quantity_unit = $this->faker->word;
         $is_daily = $this->faker->boolean;
         $is_hidden = $this->faker->boolean;
@@ -109,7 +108,7 @@ class productControllerTest extends TestCase
             'has_reminder' => $has_reminder,
         ]);
 
-        $products = Products::query()
+        $products = Product::query()
             ->where('title', $title)
             ->where('image', $image)
             ->where('price', $price)
@@ -123,8 +122,8 @@ class productControllerTest extends TestCase
         $this->assertCount(1, $products);
         $product = $products->first();
 
-        $response->assertRedirect(route('products.index'));
-        $response->assertSessionHas('products.id', $products->id);
+        $response->assertRedirect(route('product.index'));
+        $response->assertSessionHas('product.id', $product->id);
     }
 
 
@@ -138,8 +137,8 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.show', $product));
 
         $response->assertOk();
-        $response->assertViewIs('products.show');
-        $response->assertViewHas('products');
+        $response->assertViewIs('product.show');
+        $response->assertViewHas('product');
     }
 
 
@@ -153,8 +152,8 @@ class productControllerTest extends TestCase
         $response = $this->get(route('product.edit', $product));
 
         $response->assertOk();
-        $response->assertViewIs('products.edit');
-        $response->assertViewHas('products');
+        $response->assertViewIs('product.edit');
+        $response->assertViewHas('product');
     }
 
 
@@ -178,9 +177,9 @@ class productControllerTest extends TestCase
         $product = product::factory()->create();
         $title = $this->faker->sentence(4);
         $image = $this->faker->word;
-        $price = $this->faker->randomFloat(/** decimal_attributes **/);
+        $price = $this->faker->word;
         $price_unit = $this->faker->word;
-        $quantity = $this->faker->randomFloat(/** decimal_attributes **/);
+        $quantity = $this->faker->word;
         $quantity_unit = $this->faker->word;
         $is_daily = $this->faker->boolean;
         $is_hidden = $this->faker->boolean;
@@ -200,8 +199,8 @@ class productControllerTest extends TestCase
 
         $product->refresh();
 
-        $response->assertRedirect(route('products.index'));
-        $response->assertSessionHas('products.id', $products->id);
+        $response->assertRedirect(route('product.index'));
+        $response->assertSessionHas('product.id', $product->id);
 
         $this->assertEquals($title, $product->title);
         $this->assertEquals($image, $product->image);
@@ -221,11 +220,11 @@ class productControllerTest extends TestCase
     public function destroy_deletes_and_redirects()
     {
         $product = product::factory()->create();
-        $product = Products::factory()->create();
+        $product = Product::factory()->create();
 
         $response = $this->delete(route('product.destroy', $product));
 
-        $response->assertRedirect(route('products.index'));
+        $response->assertRedirect(route('product.index'));
 
         $this->assertDeleted($product);
     }

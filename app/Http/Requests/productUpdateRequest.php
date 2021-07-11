@@ -26,9 +26,9 @@ class productUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'image' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'string', 'max:50'],
             'price_unit' => ['required', 'string'],
-            'quantity' => ['required', 'numeric'],
+            'quantity' => ['required', 'string', 'max:50'],
             'quantity_unit' => ['required', 'string'],
             'is_daily' => ['required'],
             'is_hidden' => ['required'],

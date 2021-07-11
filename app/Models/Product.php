@@ -32,11 +32,23 @@ class Product extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'price' => 'decimal',
-        'quantity' => 'decimal',
+        'title' => 'string',
+        'image' => 'string',
+        'price' => 'string',
+        'price_unit' => 'string',
+        'quantity' => 'string',
+        'quantity_unit' => 'string',
         'is_daily' => 'boolean',
         'is_hidden' => 'boolean',
-        'has_reminder' => 'boolean',
+        'has_reminder' => 'boolean'
     ];
 }
+// 'title' => 'string'
+// 'image' => 'string'
+// 'price' => 'string'
+// 'price_unit' => 'string'
+// 'quantity' => 'string'
+// 'quantity_unit' => 'string'
+// 'is_daily' => 'boolean'
+// 'is_hidden' => 'boolean'
+// 'has_reminder' => 'boolean'

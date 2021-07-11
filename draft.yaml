@@ -2,9 +2,9 @@ models:
   Product:
     title: string
     image: string
-    price: decimal
+    price: string:50
     price_unit: string
-    quantity: decimal
+    quantity: string:50
     quantity_unit: string
     is_daily: boolean default:false
     is_hidden: boolean default:false
@@ -12,29 +12,29 @@ models:
 controllers:
   product:
     monthly:
-      query: all:products
-      render: products.monthly with:products
+      query: all:product
+      render: product.monthly with:product
     daily:
-      query: all:products
-      render: products.daily with:products
+      query: all:product
+      render: product.daily with:product
     createMonthly:
-      render: products.create.monthly
+      render: product.create.monthly
     createDaily:
-      render: products.create.daily
+      render: product.create.daily
     store:
-      validate: products
-      save: products
-      flash: products.id
-      redirect: products.index
+      validate: product
+      save: product
+      flash: product.id
+      redirect: product.index
     show:
-      render: products.show with:products
+      render: product.show with:product
     edit:
-      render: products.edit with:products
+      render: product.edit with:product
     update:
-      validate: products
-      update: products
-      flash: products.id
-      redirect: products.index
+      validate: product
+      update: product
+      flash: product.id
+      redirect: product.index
     destroy:
-      delete: products
-      redirect: products.index
+      delete: product
+      redirect: product.index

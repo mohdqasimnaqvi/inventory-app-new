@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\productStoreRequest;
 use App\Http\Requests\productUpdateRequest;
-use App\Product;
-use App\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class productController extends Controller
@@ -18,7 +17,8 @@ class productController extends Controller
     {
         $products = Product::all();
 
-        return view('products.monthly', compact('products'));
+
+        return view('product.monthly', compact('products'));
     }
 
     /**
@@ -29,7 +29,7 @@ class productController extends Controller
     {
         $products = Product::all();
 
-        return view('products.daily', compact('products'));
+        return view('product.daily', compact('products'));
     }
 
     /**
@@ -38,7 +38,7 @@ class productController extends Controller
      */
     public function createMonthly(Request $request)
     {
-        return view('products.create.monthly');
+        return view('product.create.monthly');
     }
 
     /**
@@ -47,7 +47,7 @@ class productController extends Controller
      */
     public function createDaily(Request $request)
     {
-        return view('products.create.daily');
+        return view('product.create.daily');
     }
 
     /**
@@ -56,56 +56,56 @@ class productController extends Controller
      */
     public function store(productStoreRequest $request)
     {
-        $products = Products::create($request->validated());
+        $product = Product::create($request->validated());
 
-        $request->session()->flash('products.id', $products->id);
+        $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, product $product)
     {
-        return view('products.show', compact('products'));
+        return view('product.show', compact('product'));
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, product $product)
     {
-        return view('products.edit', compact('products'));
+        return view('product.edit', compact('product'));
     }
 
     /**
      * @param \App\Http\Requests\productUpdateRequest $request
-     * @param \App\Product $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(productUpdateRequest $request, product $product)
     {
-        $products->update($request->validated());
+        $product->update($request->validated());
 
-        $request->session()->flash('products.id', $products->id);
+        $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, product $product)
     {
-        $products->delete();
+        $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 }

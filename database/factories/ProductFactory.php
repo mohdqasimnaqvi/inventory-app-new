@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Product;
+use App\Models\Product;
 
 class ProductFactory extends Factory
 {
@@ -23,11 +23,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => implode(' ', $this->faker->words(3)),
-            'image' => $this->faker->word,
-            'price' => $this->faker->randomFloat(0, 0, 255),
+            'title' => $this->faker->sentence(4),
+            'image' => $this->faker->imageUrl(),
+            'price' => $this->faker->regexify('[0-9]{2,4}'),
             'price_unit' => $this->faker->word,
-            'quantity' => $this->faker->randomFloat(0, 0, 255),
+            'quantity' => $this->faker->regexify('[0-9]{2,4}'),
             'quantity_unit' => $this->faker->word,
             'is_daily' => $this->faker->boolean,
             'is_hidden' => $this->faker->boolean,
