@@ -15,7 +15,7 @@ class productController extends Controller
      */
     public function monthly(Request $request)
     {
-        $products = Product::all();
+        $products = Product::latest()->get();
 
 
         return view('product.monthly', compact('products'));
@@ -27,7 +27,7 @@ class productController extends Controller
      */
     public function daily(Request $request)
     {
-        $products = Product::all();
+        $products = Product::latest()->get();
 
         return view('product.daily', compact('products'));
     }
@@ -60,7 +60,7 @@ class productController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('product.index');
+        return redirect('/product/monthly');
     }
 
     /**
@@ -94,7 +94,7 @@ class productController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect()->route('product.index');
+        return redirect('/product/monthly');
     }
 
     /**
@@ -106,6 +106,6 @@ class productController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect('/product/monthly');
     }
 }

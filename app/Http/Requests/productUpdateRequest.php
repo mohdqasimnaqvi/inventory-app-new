@@ -30,9 +30,6 @@ class productUpdateRequest extends FormRequest
             'price_unit' => ['required', 'string'],
             'quantity' => ['required', 'string', 'max:50'],
             'quantity_unit' => ['required', 'string'],
-            'is_daily' => ['required'],
-            'is_hidden' => ['required'],
-            'has_reminder' => ['required'],
         ];
     }
 }
