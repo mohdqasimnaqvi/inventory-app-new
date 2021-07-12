@@ -30,7 +30,7 @@ class productController extends Controller
      */
     public function monthly(Request $request)
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->where('is_daily', '=', 0)->paginate(10);
 
 
         return view('product.monthly', compact('products'));
@@ -42,7 +42,7 @@ class productController extends Controller
      */
     public function daily(Request $request)
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->where('is_daily', '=', 1)->paginate(10);
 
         return view('product.daily', compact('products'));
     }

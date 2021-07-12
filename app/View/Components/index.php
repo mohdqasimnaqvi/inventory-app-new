@@ -7,16 +7,18 @@ use Illuminate\View\Component;
 class index extends Component
 {
     public $products;
+    public $links;
     public $is_daily;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($products = [], $isDaily = false)
+    public function __construct($products = [], $isDaily = false, $links)
     {
         $this->products = $products;
         $this->is_daily = $isDaily;
+        $this->links = $links;
         // $this->products = isset($products) ? $products : Product::all();
     }
 

@@ -16,7 +16,7 @@
             <td>{{ $product->price_unit }}</td>
             <td>{{ $product->quantity }}</td>
             <td>{{ $product->quantity_unit }}</td>
-            <td class="p-0"><img height="50px" src="{{ $product->image }}" /></td>
+            <td class="p-0"><img style="height:50px;width: 100px;object-fit: cover" src="{{ $product->image }}" /></td>
             <td style="margin-left: auto" class="bg-primary text-white" onclick="() => location = '/product/{{ $product->id }}/edit'">
                 <a
                 href="/product/{{ $product->id }}/edit"
@@ -43,4 +43,5 @@
 <div class="container-md px-4">
     <a href="/product/create-{{ $is_daily ? 'daily' : 'monthly'}}"  class="btn btn-success ml-0">Add Product</a>
     <a href="/total/{{ $is_daily ? 'daily' : 'monthly'}}" class="btn btn-primary ml-0">Get Total</a>
+    {!! $links !!}
 </div>
