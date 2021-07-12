@@ -23,12 +23,12 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(4),
+            'title' => implode(' ', $this->faker->words(3)),
             'image' => $this->faker->imageUrl(),
             'price' => $this->faker->regexify('[0-9]{2,4}'),
-            'price_unit' => $this->faker->word,
+            'price_unit' => ['dollar', 'euro', 'ruppee'][rand(0, 2)],
             'quantity' => $this->faker->regexify('[0-9]{2,4}'),
-            'quantity_unit' => $this->faker->word,
+            'quantity_unit' => ['kilogram', 'pound', 'no_unit'][rand(0, 2)],
             'is_daily' => $this->faker->boolean,
             'is_hidden' => $this->faker->boolean,
             'has_reminder' => $this->faker->boolean,

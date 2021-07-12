@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        button.hover.bg-danger:hover {
+            background-color: inherit!important;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <title>Inventory app</title>
     <script
@@ -17,23 +22,17 @@
     <div class="bg-secondary">
         <nav
             class="navbar navbar-expand-lg navbar-dark container-md">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Home</a>
-                </li>
+              <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                   <a class="nav-link" href="/product/monthly">Monthly Products</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/product/daily">Daily Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
               </ul>
             </div>

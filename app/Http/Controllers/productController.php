@@ -9,6 +9,21 @@ use Illuminate\Http\Request;
 
 class productController extends Controller
 {
+    public function monthlyTotal(Request $request)
+    {
+        $products = Product::latest()->get();
+
+
+        return view('total.monthly', compact('products'));
+    }
+    public function dailyTotal(Request $request)
+    {
+        $products = Product::latest()->get();
+
+
+        return view('total.daily', compact('products'));
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -60,7 +75,7 @@ class productController extends Controller
 
         $request->session()->flash('product.id', $product->id);
 
-        return redirect('/product/monthly');
+        return redirect('/product/' . ($request->all()['is_daily'] ? 'daily' : 'monthly'));
     }
 
     /**
@@ -90,11 +105,14 @@ class productController extends Controller
      */
     public function update(productUpdateRequest $request, product $product)
     {
-        $product->update($request->validated());
+        $path = $request->file('image')->store('avatars');
+        dd($path);
 
-        $request->session()->flash('product.id', $product->id);
+        // $product->update($request->validated());
 
-        return redirect('/product/monthly');
+        // $request->session()->flash('product.id', $product->id);
+
+        // return redirect('/product/' . ($request->all()['is_daily'] ? 'daily' : 'monthly'));
     }
 
     /**
@@ -106,6 +124,6 @@ class productController extends Controller
     {
         $product->delete();
 
-        return redirect('/product/monthly');
+return redirect('/product/' . $request->all()['is_daily']);
     }
 }

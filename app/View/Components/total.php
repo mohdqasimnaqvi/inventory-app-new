@@ -1,23 +1,20 @@
 <?php
 
 namespace App\View\Components;
-use App\Models\Product;
+
 use Illuminate\View\Component;
 
-class index extends Component
+class total extends Component
 {
     public $products;
-    public $is_daily;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($products = [], $isDaily = false)
+    public function __construct($products)
     {
         $this->products = $products;
-        $this->is_daily = $isDaily;
-        // $this->products = isset($products) ? $products : Product::all();
     }
 
     /**
@@ -27,6 +24,6 @@ class index extends Component
      */
     public function render()
     {
-        return view('components.index');
+        return view('components.total');
     }
 }

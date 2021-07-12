@@ -5,7 +5,7 @@
 @endphp
 @extends('layouts.app')
 @section('content')
-    <x-index :products="$products->filter(fn($item) => $item->is_daily)"/>
+    <x-index :products="$products->filter(fn($item) => $item->is_daily)" :isDaily="true"/>
 @endsection
 
 

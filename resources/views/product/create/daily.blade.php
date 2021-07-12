@@ -1,7 +1,5 @@
-{{--
-    @extends('layouts.app')
+@extends('layouts.app')
 
-    @section('content')
-        products.create.daily template
-    @endsection
---}}
+@section('content')
+    <x-form :isDaily="1"/>
+@endsection
