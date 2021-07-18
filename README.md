@@ -8,7 +8,7 @@ Inventory app is going to make it easy to manage your home supplies and no longe
 
 ## How to clone
 
-Cloning it is very easy and simple, in order to do so you'll need to follaw these steps
+Cloning it is very easy and simple, in order to do so you'll need to follow these steps
 
 1. Clone the repository
 2. make a local dev server with mysql
