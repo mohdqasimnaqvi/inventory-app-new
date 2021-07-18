@@ -14,15 +14,15 @@ enctype="multipart/form-data" >
 </div>
 <div class="form-group d-flex">
     <x-input name="price" type="number"  value="{{ $product->price }}"/>
-
+    {{-- ₹, € --}}
     <select name="price_unit" id="price_unit" class="form-control" style="width: 30%">
-        <x-form-dropdown-item :current_val="$product->price_unit" value="dollar" />
-        <x-form-dropdown-item :current_val="$product->price_unit" value="ruppee" />
-        <x-form-dropdown-item :current_val="$product->price_unit" value="euro" />
+        <x-form-dropdown-item :current_val="$product->price_unit" value="$" />
+        <x-form-dropdown-item :current_val="$product->price_unit" value="₹" />
+        <x-form-dropdown-item :current_val="$product->price_unit" value="€" />
     </select>
 </div>
 <div class="form-group">
-    <x-input type="file" name="image"/>
+    <x-file-input id="1"/>
 </div>
 <div class="form-group d-flex" style="justify-content: stretch;" >
     <x-input value="{{ $product->quantity }}" name="quantity" type="number"/>

@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 
 
-Route::get('product/monthly', [ProductController::class, 'monthly']);
+Route::get('monthly', [ProductController::class, 'monthly']);
 Route::get('total/monthly', [ProductController::class, 'monthlyTotal']);
 Route::get('total/daily', [ProductController::class, 'dailylyTotal']);
-Route::get('product/daily', [ProductController::class, 'daily']);
-Route::get('product/create-monthly', [ProductController::class, 'createMonthly']);
-Route::get('product/create-daily', [ProductController::class, 'createDaily']);
+Route::get('daily', [ProductController::class, 'daily']);
+Route::get('create-monthly', [ProductController::class, 'createMonthly']);
+Route::get('create-daily', [ProductController::class, 'createDaily']);
 Route::resource('product', ProductController::class)->except('index', 'create');

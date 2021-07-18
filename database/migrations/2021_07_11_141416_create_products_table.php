@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('price', 50);
+            $table->decimal('price');
             $table->string('price_unit');
-            $table->string('quantity', 50);
+            $table->decimal('quantity');
             $table->string('quantity_unit');
             $table->boolean('is_daily')->default(false);
             $table->boolean('is_hidden')->default(false);

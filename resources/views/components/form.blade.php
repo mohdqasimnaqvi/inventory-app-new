@@ -1,7 +1,9 @@
 <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
-<form class="container-fluid px-5 flow" action="/product" method="POST">
+<div class="container-fluid px-5 flow">
+    <h1 class="h1">{{$isDaily ? 'Create a daily product' : 'Create a monthly product'}}</h1>
+</div>
+<form class="container-fluid px-5 flow" action="/product" method="POST" enctype="multipart/form-data">
     @csrf
-    <h1>{{$isDaily ? 'Create a daily product' : 'Create a monthly product'}}</h1>
     <div class="form-group">
         <x-input name="title" type="text" placeholder="Name..." :group="true" value="{{ old('title')}}"/>
     </div>
@@ -16,6 +18,9 @@
             <option value="euro"   {{ old('price_unit') === 'euro' ? 'selected' : '' }}>euro</option>
         </select>
     </div>
+    <div class="form-group">
+        <x-file-input id="3"/>
+    </div>
     <div class="form-group d-flex" style="justify-content: stretch;" >
         <x-input value="{{ old('quantity') }}" name="quantity" type="number"/>
         <select name="quantity_unit" id="quantity_unit" class="form-control" style="width: 30%">
@@ -28,7 +33,6 @@
     </div>
     <input type="hidden" name="is_daily" value="{{ $isDaily }}" />
     <input type="hidden" name="is_hidden" value="0" />
-    <input type="hidden" name="image" value="no image" />
     <button class="btn btn-info" type="submit">Finish</button>
     <ul>
         @foreach($errors->all() as $error)

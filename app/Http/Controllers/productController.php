@@ -6,6 +6,7 @@ use App\Http\Requests\productStoreRequest;
 use App\Http\Requests\productUpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class productController extends Controller
 {
@@ -42,6 +43,7 @@ class productController extends Controller
      */
     public function daily(Request $request)
     {
+
         $products = Product::latest()->where('is_daily', '=', 1)->paginate(10);
 
         return view('product.daily', compact('products'));
@@ -71,13 +73,13 @@ class productController extends Controller
      */
     public function store(productStoreRequest $request)
     {
-        $product = Product::create($request->validated());
-
+        $product = new Product($request->validated());
+        $path = $request->file('image')->store("public");
+        $product->image = $path;
+        $product->save();
         $request->session()->flash('product.id', $product->id);
-
-        return redirect('/product/' . ($request->all()['is_daily'] ? 'daily' : 'monthly'));
+        return redirect('/' . ($request->all()['is_daily'] ? 'daily' : 'monthly'));
     }
-
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Product $product
@@ -85,6 +87,7 @@ class productController extends Controller
      */
     public function show(Request $request, product $product)
     {
+
         return view('product.show', compact('product'));
     }
 
@@ -105,16 +108,13 @@ class productController extends Controller
      */
     public function update(productUpdateRequest $request, product $product)
     {
-        $path = $request->file('image')->store('avatars');
-        dd($path);
-
-        // $product->update($request->validated());
-
-        // $request->session()->flash('product.id', $product->id);
-
-        // return redirect('/product/' . ($request->all()['is_daily'] ? 'daily' : 'monthly'));
+        $newProduct = $request->validated();
+        Storage::delete($product->image);
+        $newProduct['image'] = $request->file('image')->store('public');
+        $product->update($newProduct);
+        return redirect('/' . ($product->is_daily ? "daily" : "monthly"));
     }
-
+    
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Product $product
@@ -122,8 +122,8 @@ class productController extends Controller
      */
     public function destroy(Request $request, product $product)
     {
+        Storage::delete($product->image);
         $product->delete();
-
-return redirect('/product/' . $request->all()['is_daily']);
+        return redirect('/' . $request->all()['is_daily']);
     }
 }
